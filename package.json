@@ -1,0 +1,19 @@
+{
+  "author": "Saltbox Team (http://www.saltbox.com/)",
+  "name": "koan",
+  "description": "Zencoder JS Library, based on the zencoder-py library",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fugu13/koan.git"
+  },
+  "main": "lib/koan.js",
+  "engines": {
+    "node": "~0.6.10"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vows": "~0.6.1"
+  },
+  "optionalDependencies": {}
+}
