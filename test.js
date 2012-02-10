@@ -31,7 +31,7 @@ vows.describe("Koan").addBatch({
             },
             'then asking for details by id': {
                 topic: function(response) {
-                    zen.output(response.outputs[0].id).progress(this.callback);
+                    new Koan(process.env.ZENCODER_API_KEY, true).output(response.outputs[0].id).progress(this.callback);
                 },
                 'should return a status with an id': function(error, status) {
                     assert.isNull(error);
