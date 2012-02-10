@@ -11,31 +11,28 @@ if(!process.env.ZENCODER_API_KEY) {
 
 vows.describe("Koan").addBatch({
     'A client': {
-        topic: Koan(process.env.ZENCODER_API_KEY),
+        topic: new Koan(process.env.ZENCODER_API_KEY, true),
         'creating a job with just a URL': {
             topic: function(zen) {
                 //TODO: figure out why nesting topics isn't working
-                console.log(zen);
                 zen.job.create(
                     'https://s3.amazonaws.com/sbox-random/testmovie.mov',
                     this.callback
                 );
             },
             'then asking for job details': {
-                topic: function(error, response) {
+                topic: function(response) {
                     response.outputs[0].progress(this.callback);
                 },
-                
                 'should return a status with an id': function(error, status) {
                     assert.isNull(error);
                     assert.isString(status.id);
                 }
             },
             'then asking for details by id': {
-                topic: function(error, response) {
+                topic: function(response) {
                     zen.output(response.outputs[0].id).progress(this.callback);
                 },
-                
                 'should return a status with an id': function(error, status) {
                     assert.isNull(error);
                     assert.isString(status.id);
